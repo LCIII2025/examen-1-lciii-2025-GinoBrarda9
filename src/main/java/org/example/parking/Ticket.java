@@ -37,7 +37,25 @@ public class Ticket {
         // por ejemplo si estuvo 45 minutos se le tarifa por 60, si estuvo 80 minutos se le tarifa por 120 minutos, etc...
         // retornar el importe final
 
-        return 0;
+        long minutos = calcularMinutos(); //almaceno los minutos estacionado
+        long horas = (minutos+59) / 60; //esos minutos ej:130 tienen que redondearse para arriba asi que se suma 59 y luego se lo divide
+        double tarifa=0;
+        switch(vehiculo.getTipo()) {
+            case AUTO:
+                tarifa=100;
+                break;
+            case SUV:
+                tarifa=130;
+                break;
+            case PICKUP:
+                tarifa=180;
+                break;
+
+        }
+        return horas*tarifa;
+
+
+
     }
 
 }
